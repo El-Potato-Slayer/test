@@ -2,6 +2,9 @@ const { resolve } = require( 'path' )
 // require('dotenv').config({ path: './.env' }); 
 const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack')
+
+// replace accordingly './.env' with the path of your .env file 
+require('dotenv').config({ path: './.env' }); 
 module.exports = {
   entry: './src/index.js',
   module: {
@@ -24,7 +27,11 @@ module.exports = {
     directory: resolve( __dirname, 'dist' )
     }
   },
-
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env)
+    }),
+  ],
   target: 'web',
   mode: 'production'
 }
