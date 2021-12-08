@@ -3,5 +3,6 @@ import axios from 'axios'
 
 // console.log(env);
 // console.log(dotenv)
-console.log(process.env.HIDDEN_KEY);
+const key = process.env.HIDDEN_KEY
+console.log(key);
 console.log(axios);
